@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color-scheme: dark;
+    background-color: #070913;
+  }
+
+  h1, h2, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes slowAuroraDrift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slowOrbFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(28px, -18px, 0) scale(1.08);
+  }
+}
+
+@keyframes rgbPulseAura {
+  0%, 100% {
+    box-shadow:
+      0 0 14px rgba(34, 211, 238, 0.35),
+      0 0 28px rgba(168, 85, 247, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(34, 211, 238, 0.62),
+      0 0 42px rgba(236, 72, 153, 0.42);
+  }
+}
+
+@keyframes rgbBoardHalo {
+  0%, 100% {
+    box-shadow:
+      0 0 26px rgba(34, 211, 238, 0.22),
+      0 0 54px rgba(139, 92, 246, 0.16),
+      0 20px 50px rgba(0, 0, 0, 0.65);
+  }
+  50% {
+    box-shadow:
+      0 0 36px rgba(236, 72, 153, 0.28),
+      0 0 64px rgba(34, 211, 238, 0.24),
+      0 20px 50px rgba(0, 0, 0, 0.65);
+  }
+}
+
+.rgb-arena-bg {
+  background-color: #070913;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.14), transparent 42%),
+    radial-gradient(circle at 85% 25%, rgba(168, 85, 247, 0.16), transparent 44%),
+    radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12), transparent 46%),
+    linear-gradient(125deg, #060812 0%, #0d132b 32%, #180d29 66%, #071922 100%);
+  background-size: 260% 260%;
+  animation: slowAuroraDrift 24s ease-in-out infinite;
+}
+
+.rgb-orb-float {
+  animation: slowOrbFloat 18s ease-in-out infinite;
+}
+
+.rgb-pulse-glow {
+  animation: rgbPulseAura 2.8s ease-in-out infinite;
+}
+
+.rgb-board-halo {
+  animation: rgbBoardHalo 5.5s ease-in-out infinite;
+}
+
+.rgb-gradient-text {
+  background: linear-gradient(90deg, #67e8f9 0%, #c084fc 50%, #f472b6 100%);
+  background-size: 200% auto;
+  animation: slowAuroraDrift 9s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Refined custom scrollbar for move lists and chapter sidebar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.28);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.48);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
